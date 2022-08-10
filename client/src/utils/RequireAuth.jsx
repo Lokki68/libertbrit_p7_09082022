@@ -19,9 +19,11 @@ const RequireAuth = ({ children, withAuth }) => {
       } else {
         const id = localStorage.getItem("groupomania-id");
         const data = { token, id };
+        console.log("data => ", data);
 
         checkToken(data)
           .then((res) => {
+            console.log("res => ", res);
             if (res.status === 200) {
               dispatch(loginUserReducer(res.data));
             } else {

@@ -2,6 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 import { GlobeAltIcon } from "@heroicons/react/solid";
 import HeaderButton from "../../UiComponents/Buttons/HeaderButton.jsx";
+import login from "../../User/Login.jsx";
 
 const Container = tw.header`
     fixed
@@ -22,8 +23,12 @@ const Header = () => {
         <p className="text-white font-bold text-2xl">Groupomania</p>
       </div>
       <div className="flex justify-around mt-auto mb-4">
-        <HeaderButton>Connexion</HeaderButton>
-        <HeaderButton>Inscription</HeaderButton>
+        <HeaderButton onClick={() => console.log("Connexion")}>
+          Connexion
+        </HeaderButton>
+        <HeaderButton onClick={() => console.log("Inscription")}>
+          Inscription
+        </HeaderButton>
       </div>
     </Container>
   );

@@ -45,7 +45,7 @@ export const deleteUser = (id) => {
 
 export const checkToken = (data) => {
   return axios
-    .post(`${environnement.apiUrl}/ath/checkToken`, data)
+    .post(`${environnement.apiUrl}/auth/checkToken`, data)
     .then((res) => res.data)
     .catch((err) => console.log({ err: err.message }));
 };
