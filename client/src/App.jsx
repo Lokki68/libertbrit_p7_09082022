@@ -8,7 +8,7 @@ import RequireAuth from "./utils/RequireAuth.jsx";
 
 function App() {
   return (
-    <div className="h-[100vh] text-center bg-fond">
+    <div className="h-[100vh] text-center bg-[url('assets/photo_entreprise.jpg')] bg-center bg-cover">
       <Container>
         <Routes>
           <Route

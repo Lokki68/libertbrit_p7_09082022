@@ -1,8 +1,8 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const passwordValidator = require('password-validator');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const passwordValidator = require("password-validator");
 
-const db = require('../models');
+const db = require("../models");
 
 const User = db.users;
 
@@ -32,7 +32,7 @@ exports.signup = (req, res, next) => {
   // Check PassWord
 
   if (!schemaValidPassword.validate(password)) {
-    return res.status(403).json({ error: 'Password Security No Conform' });
+    return res.json({ status: 403, error: "Password Security No Conform" });
   }
 
   // Create New User
@@ -49,10 +49,10 @@ exports.signup = (req, res, next) => {
 
       User.create(newUser)
         .then((_) => {
-          const msg = 'User Created';
+          const msg = "User Created";
           res.json({ status: 200, msg });
         })
-        .catch((err) => res.json({ status: 400, err: err.message }));
+        .catch((err) => res.json({ status: 400, error: err.message }));
     })
 
     .catch((err) => res.json({ status: 500, err: err.message }));
@@ -69,7 +69,7 @@ exports.login = (req, res) => {
       // No User found
 
       if (!user[0]) {
-        return res.status(404).json({ err: 'User not found' });
+        return res.json({ status: 401, error: "User not found" });
       }
 
       // Check Password
@@ -78,7 +78,7 @@ exports.login = (req, res) => {
         .then((valid) => {
           // If no good password
           if (!valid) {
-            return res.status(404).json({ err: 'Password no good' });
+            return res.json({ status: 404, error: "Password no good" });
           }
 
           // Password Ok
@@ -107,10 +107,10 @@ exports.verifToken = (req, res) => {
       where: { id },
     })
       .then((user) => {
-        res.json({ status: 200, data: user[0], msg: 'user found' });
+        res.json({ status: 200, data: user[0], msg: "user found" });
       })
-      .catch((err) => res.json({ status: 404, msg: 'User not found' }));
+      .catch((err) => res.json({ status: 404, msg: "User not found" }));
   } else {
-    res.json({ status: 500, msg: 'Error' });
+    res.json({ status: 500, msg: "Error" });
   }
 };
