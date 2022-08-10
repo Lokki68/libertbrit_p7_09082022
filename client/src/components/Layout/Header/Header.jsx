@@ -1,6 +1,7 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 import { GlobeAltIcon } from "@heroicons/react/solid";
+import HeaderButton from "../../UiComponents/Buttons/HeaderButton.jsx";
 
 const Container = tw.header`
     flex
@@ -18,6 +19,10 @@ const Header = () => {
       <div className="flex justify-center items-center mx-2.5">
         <GlobeAltIcon className="h-9 text-white" />
         <p className="text-white font-bold text-2xl">Groupomania</p>
+      </div>
+      <div className="flex justify-around mt-auto mb-4">
+        <HeaderButton>Connexion</HeaderButton>
+        <HeaderButton>Inscription</HeaderButton>
       </div>
     </Container>
   );
