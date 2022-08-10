@@ -4,6 +4,7 @@ import { GlobeAltIcon } from "@heroicons/react/solid";
 import HeaderButton from "../../UiComponents/Buttons/HeaderButton.jsx";
 
 const Container = tw.header`
+    fixed
     flex
     flex-col
     justify-start

@@ -5,8 +5,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'display': [],
-      'body': []
+      'display': ['Inconsolata', 'sans-serif'],
+      'body': ['Roboto', 'sans-serif'],
     },
     colors: {
       'primary': {
@@ -20,7 +20,11 @@ module.exports = {
       'success': '#35591a',
       'alert': '#591a1a'
     },
-    extend: {},
+    extend: {
+      backGroundImage: {
+        'main-pattern': "url('/assets/photo_entreprise.jpg')"
+      }
+    },
   },
   plugins: [],
 }
