@@ -22,11 +22,14 @@ const MobilMenu = () => {
         <div className="flex justify-between">
           <div
             onClick={() => navigate("/settings")}
-            className="cursor-pointer p-1 z-10"
+            className="cursor-pointer p-1 hover:text-primary-300"
           >
             <CogIcon className="h-7 " />
           </div>
-          <div onClick={logout} className="cursor-pointer p-1 z-10">
+          <div
+            onClick={logout}
+            className="cursor-pointer p-1 hover:text-primary-300"
+          >
             <LogoutIcon className="h-7" />
           </div>
         </div>
