@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home.jsx";
 import Login from "./components/User/Login.jsx";
 import Register from "./components/User/Register.jsx";
 import RequireAuth from "./utils/RequireAuth.jsx";
+import Annuaire from "./components/Annuaire/Annuaire.jsx";
 
 function App() {
   return (
@@ -32,6 +33,14 @@ function App() {
             element={
               <RequireAuth withAuth={false}>
                 <Register />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/annuaire"
+            element={
+              <RequireAuth withAuth={true}>
+                <Annuaire />
               </RequireAuth>
             }
           />
