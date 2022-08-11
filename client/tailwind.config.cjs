@@ -8,6 +8,10 @@ module.exports = {
       'display': ['Inconsolata', 'sans-serif'],
       'body': ['Roboto', 'sans-serif'],
     },
+    backdropFilter: {
+      'none': 'none',
+      'blur': 'blur(20px)',
+    },
 
     extend: {
       backGroundImage: {

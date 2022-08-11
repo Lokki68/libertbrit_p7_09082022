@@ -8,13 +8,20 @@ const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (username === "" || password === "") {
-      setErrorMessage("Veuillez remplir tous les champs");
+      toast.warn(`Veuillez remplir tous les champs.`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+      });
     } else {
       const data = {
         username,
@@ -36,7 +43,15 @@ const Login = () => {
             });
             setTimeout(() => navigate("/"), 3000);
           } else if (res.status === 401 || res.status === 404) {
-            setErrorMessage(res.error);
+            toast.error(`${res.error}`, {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: false,
+              progress: undefined,
+            });
           }
         })
         .catch((err) => console.log({ err: err.message }));
@@ -59,7 +74,6 @@ const Login = () => {
             id="username"
             value={username}
             onInput={(e) => {
-              setErrorMessage("");
               setUsername(e.target.value);
             }}
             required
@@ -74,13 +88,11 @@ const Login = () => {
             id="password"
             value={password}
             onInput={(e) => {
-              setErrorMessage("");
               setPassword(e.target.value);
             }}
             required
           />
         </div>
-        <p className="text-alert bg-red-400">{errorMessage}</p>
         <HeaderButton onClick={handleSubmit}>Envoyer</HeaderButton>
       </form>
     </div>

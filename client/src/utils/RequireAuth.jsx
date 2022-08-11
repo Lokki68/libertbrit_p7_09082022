@@ -23,7 +23,6 @@ const RequireAuth = ({ children, withAuth }) => {
 
         checkToken(data)
           .then((res) => {
-            console.log("res => ", res);
             if (res.status === 200) {
               dispatch(loginUserReducer(res.data));
             } else {
@@ -37,7 +36,7 @@ const RequireAuth = ({ children, withAuth }) => {
           });
       }
     }
-  }, []);
+  });
 
   return <>{children}</>;
 };

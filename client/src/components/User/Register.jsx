@@ -11,13 +11,19 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (username === "" || password === "" || email === "") {
-      setErrorMessage("Veuillez remplir tous les champs");
+      toast.warn(`Veuillez remplir tous les champs !`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+      });
     } else {
       const data = {
         username,
@@ -39,7 +45,14 @@ const Register = () => {
             setTimeout(() => navigate("/login"), 3000);
           } else if (res.status === 400 || res.status === 403) {
             console.log(res);
-            setErrorMessage(res.error);
+            toast.error(`${res.error}`, {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: false,
+            });
           }
         })
         .catch((err) => console.log({ err: err.message }));
@@ -62,7 +75,6 @@ const Register = () => {
             id="username"
             value={username}
             onInput={(e) => {
-              setErrorMessage("");
               setUsername(e.target.value);
             }}
             required
@@ -77,7 +89,6 @@ const Register = () => {
             id="email"
             value={email}
             onInput={(e) => {
-              setErrorMessage("");
               setEmail(e.target.value);
             }}
             required
@@ -92,13 +103,11 @@ const Register = () => {
             id="password"
             value={password}
             onInput={(e) => {
-              setErrorMessage("");
               setPassword(e.target.value);
             }}
             required
           />
         </div>
-        <p className="text-alert bg-red-400">{errorMessage}</p>
         <HeaderButton onClick={handleSubmit}>Envoyer</HeaderButton>
       </form>
     </div>
