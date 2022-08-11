@@ -8,6 +8,7 @@ const MobilNav = () => {
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
   };
+
   return (
     <div className="flex ml-4 md:hidden">
       {!isNavOpen ? (
@@ -20,7 +21,7 @@ const MobilNav = () => {
         </div>
       )}
       <div className="absolute -bottom-52 left-0 ">
-        {isNavOpen && <MobilMenu />}
+        {isNavOpen && <MobilMenu toggleNav={toggleNav} />}
       </div>
     </div>
   );
