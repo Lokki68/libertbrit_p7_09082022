@@ -19,7 +19,6 @@ const RequireAuth = ({ children, withAuth }) => {
       } else {
         const id = localStorage.getItem("groupomania-id");
         const data = { token, id };
-        console.log("data => ", data);
 
         checkToken(data)
           .then((res) => {
