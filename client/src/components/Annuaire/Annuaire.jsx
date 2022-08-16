@@ -51,7 +51,7 @@ const Annuaire = () => {
           onClick={searchUser}
         />
       </div>
-      <div className="relative flex flex-wrap justify-center overflow-x-scroll w-full">
+      <div className="flex flex-wrap justify-center overflow-x-scroll w-full">
         {filteredData.length === 0
           ? data.map((user) => <AnnuaireCard user={user} key={user.id} />)
           : filteredData.map((user) => (

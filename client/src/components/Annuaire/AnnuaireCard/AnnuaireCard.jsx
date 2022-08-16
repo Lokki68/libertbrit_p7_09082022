@@ -24,16 +24,16 @@ const AnnuaireCard = ({ user }) => {
           <img
             src={image}
             alt="profil"
-            className=" shadow-md rounded-full h-16 w-16 "
+            className=" shadow-md rounded-full h-32 w-32 "
           />
           {admin && (
-            <StarIcon className="absolute -top-0.5 -right-2 text-primary-300 h-5" />
+            <StarIcon className="absolute -top-0.5 -right-2 text-primary-300 h-8" />
           )}
         </div>
-        <div className="flex-1">
-          <h3 className="text-2xl font-bold">{username}</h3>
-          <p>{email}</p>
-          <p>{phoneNumber}</p>
+        <div className="flex-1 flex flex-col justify-around h-full">
+          <h3 className="text-4xl font-bold">pseudo : {username}</h3>
+          <p className="text-xl">email : {email}</p>
+          <p className="text-xl">numéro de poste : {phoneNumber}</p>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@ const AnnuaireCard = ({ user }) => {
 
   return (
     <>
-      <div className="relative flex justify-between items-center w-full max-w-[330px] h-28 my-2 mx-4 p-1 rounded-md  shadow-md shadow-slate-500 hover:shadow-slate-300  bg-red-400">
+      <div className="relative flex justify-between items-center w-full max-w-[330px] h-28 my-2 mx-4 p-1 rounded-md  shadow-md shadow-slate-500 hover:shadow-slate-300  bg-slate-400">
         <InformationCircleIcon
           className="h-5 absolute top-0 right-0 hover:text-primary-100 cursor-pointer"
           onClick={toggleModal}
