@@ -34,7 +34,7 @@ const Login = () => {
             localStorage.setItem("groupomania-token", res.token);
             localStorage.setItem("groupomania-id", res.data.id);
             toast.success(`Bienvenu ${username}`, {
-              position: "top-right",
+              position: "bottom-right",
               autoClose: 2000,
               hideProgressBar: false,
               closeOnClick: true,
@@ -44,7 +44,7 @@ const Login = () => {
             setTimeout(() => navigate("/"), 3000);
           } else if (res.status === 401 || res.status === 404) {
             toast.error(`${res.error}`, {
-              position: "top-right",
+              position: "bottom-right",
               autoClose: 2000,
               hideProgressBar: false,
               closeOnClick: true,

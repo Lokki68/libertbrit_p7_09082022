@@ -1,13 +1,56 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { deleteAdmin, saveAdmin } from "../../api/admin.js";
+import { toast, ToastContainer } from "react-toastify";
 
 const AdminSection = ({ user, toggleFunc }) => {
   const handleUpdgrade = () => {
-    console.log("upgrade");
+    const id = user.id;
+    const data = {
+      username: user.username,
+    };
+
+    saveAdmin(id, data).then((res) => {
+      if (res.status === 200) {
+        toast.success(`${user.username} est passé Admin`, {
+          position: "bottom-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+        });
+        setTimeout(() => toggleFunc(), 3000);
+      } else {
+        toast.error(`${res.msg}`, {
+          position: "bottom-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+          progress: undefined,
+        });
+      }
+    });
   };
 
   const handleDelete = () => {
-    console.log("delete");
+    const id = user.admin;
+
+    deleteAdmin(id).then((res) => {
+      if (res.status === 200) {
+        toast.success(`${user.username} n'est plus Admin`, {
+          position: "bottom-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+        });
+        setTimeout(() => toggleFunc(), 3000);
+      }
+    });
   };
 
   return (
@@ -23,6 +66,7 @@ const AdminSection = ({ user, toggleFunc }) => {
           delete
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 };

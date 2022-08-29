@@ -17,7 +17,7 @@ const Register = () => {
 
     if (username === "" || password === "" || email === "") {
       toast.warn(`Veuillez remplir tous les champs !`, {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -35,7 +35,7 @@ const Register = () => {
         .then((res) => {
           if (res.status === 200) {
             toast.success(`Enregistrement réussi !`, {
-              position: "top-right",
+              position: "bottom-right",
               autoClose: 2000,
               hideProgressBar: false,
               closeOnClick: true,
