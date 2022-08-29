@@ -9,4 +9,8 @@
     .input {
         @apply w-full text-center h-7 text-lg
     }
+
+    .btn {
+        @apply p-1
+    }
 }
