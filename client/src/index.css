@@ -11,6 +11,6 @@
     }
 
     .btn {
-        @apply p-1
+        @apply bg-primary-300 text-white rounded-md py-1 px-2 w-24 hover:shadow-md hover:shadow-primary-100
     }
 }
