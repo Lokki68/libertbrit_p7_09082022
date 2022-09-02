@@ -7,6 +7,8 @@ import Register from "./components/User/Register.jsx";
 import RequireAuth from "./utils/RequireAuth.jsx";
 import Annuaire from "./components/Annuaire/Annuaire.jsx";
 import Profil from "./components/Profil/Profil.jsx";
+import ProfilFormInfo from "./components/Profil/ProfilForm/ProfilFormInfo.jsx";
+import ProfilFormPhoto from "./components/Profil/ProfilForm/ProfilFormPhoto.jsx";
 
 function App() {
   return (
@@ -50,6 +52,22 @@ function App() {
             element={
               <RequireAuth withAuth={true}>
                 <Profil />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/profilformphoto"
+            element={
+              <RequireAuth withAuth={true}>
+                <ProfilFormPhoto />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/profilforminfo"
+            element={
+              <RequireAuth withAuth={true}>
+                <ProfilFormInfo />
               </RequireAuth>
             }
           />
