@@ -6,6 +6,7 @@ import Login from "./components/User/Login.jsx";
 import Register from "./components/User/Register.jsx";
 import RequireAuth from "./utils/RequireAuth.jsx";
 import Annuaire from "./components/Annuaire/Annuaire.jsx";
+import Profil from "./components/Profil/Profil.jsx";
 
 function App() {
   return (
@@ -41,6 +42,14 @@ function App() {
             element={
               <RequireAuth withAuth={true}>
                 <Annuaire />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/profil"
+            element={
+              <RequireAuth withAuth={true}>
+                <Profil />
               </RequireAuth>
             }
           />

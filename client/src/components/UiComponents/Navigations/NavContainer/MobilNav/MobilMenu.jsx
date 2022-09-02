@@ -42,7 +42,7 @@ const MobilMenu = ({ toggleNav }) => {
           <div
             onClick={() => {
               toggleNav();
-              navigate("/settings");
+              navigate("/profil");
             }}
             className="cursor-pointer p-1 hover:text-primary-300"
           >
