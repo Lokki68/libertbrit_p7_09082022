@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../api/user.js";
@@ -6,13 +6,13 @@ import HeaderButton from "../UiComponents/Buttons/HeaderButton.jsx";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const usernameInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (username === "" || password === "") {
+    if (usernameInputRef === null || passwordInputRef === null) {
       toast.warn(`Veuillez remplir tous les champs.`, {
         position: "top-right",
         autoClose: 2000,
@@ -24,8 +24,8 @@ const Login = () => {
       });
     } else {
       const data = {
-        username,
-        password,
+        username: usernameInputRef.current.value,
+        password: passwordInputRef.current.value,
       };
 
       loginUser(data)
@@ -33,7 +33,7 @@ const Login = () => {
           if (res.status === 200) {
             localStorage.setItem("groupomania-token", res.token);
             localStorage.setItem("groupomania-id", res.data.id);
-            toast.success(`Bienvenu ${username}`, {
+            toast.success(`Bienvenu ${usernameInputRef.current.value}`, {
               position: "bottom-right",
               autoClose: 2000,
               hideProgressBar: false,
@@ -72,10 +72,7 @@ const Login = () => {
             name="username"
             placeholder="Nom d'utilisateur"
             id="username"
-            value={username}
-            onInput={(e) => {
-              setUsername(e.target.value);
-            }}
+            ref={usernameInputRef}
             required
           />
         </div>
@@ -86,10 +83,7 @@ const Login = () => {
             name="password"
             placeholder="Mot de passe"
             id="password"
-            value={password}
-            onInput={(e) => {
-              setPassword(e.target.value);
-            }}
+            ref={passwordInputRef}
             required
           />
         </div>
