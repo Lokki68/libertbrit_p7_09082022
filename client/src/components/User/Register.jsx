@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 import { useNavigate } from "react-router-dom";
@@ -8,14 +8,19 @@ import HeaderButton from "../UiComponents/Buttons/HeaderButton.jsx";
 
 const Register = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
+  const usernameInputRef = useRef(null);
+  const emailInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (username === "" || password === "" || email === "") {
+    if (
+      usernameInputRef === null ||
+      emailInputRef === null ||
+      passwordInputRef === null
+    ) {
       toast.warn(`Veuillez remplir tous les champs !`, {
         position: "bottom-right",
         autoClose: 2000,
@@ -26,14 +31,14 @@ const Register = () => {
       });
     } else {
       const data = {
-        username,
-        email,
-        password,
+        username: usernameInputRef.current.value,
+        email: emailInputRef.current.value,
+        password: passwordInputRef.current.value,
       };
 
       saveUser(data)
         .then((res) => {
-          if (res.status === 200) {
+          if (res?.status === 200) {
             toast.success(`Enregistrement réussi !`, {
               position: "bottom-right",
               autoClose: 2000,
@@ -43,9 +48,9 @@ const Register = () => {
               draggable: false,
             });
             setTimeout(() => navigate("/login"), 3000);
-          } else if (res.status === 400 || res.status === 403) {
+          } else if (res?.status === 400 || res?.status === 403) {
             console.log(res);
-            toast.error(`${res.error}`, {
+            toast.error(`${res?.error}`, {
               position: "top-right",
               autoClose: 2000,
               hideProgressBar: false,
@@ -73,10 +78,7 @@ const Register = () => {
             name="username"
             placeholder="Nom d'utilisateur"
             id="username"
-            value={username}
-            onInput={(e) => {
-              setUsername(e.target.value);
-            }}
+            ref={usernameInputRef}
             required
           />
         </div>
@@ -87,10 +89,7 @@ const Register = () => {
             name="email"
             placeholder="Adresse Email"
             id="email"
-            value={email}
-            onInput={(e) => {
-              setEmail(e.target.value);
-            }}
+            ref={emailInputRef}
             required
           />
         </div>
@@ -101,10 +100,7 @@ const Register = () => {
             name="password"
             placeholder="Mot de passe"
             id="password"
-            value={password}
-            onInput={(e) => {
-              setPassword(e.target.value);
-            }}
+            ref={passwordInputRef}
             required
           />
         </div>

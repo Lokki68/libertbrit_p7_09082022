@@ -30,9 +30,9 @@ const Login = () => {
 
       loginUser(data)
         .then((res) => {
-          if (res.status === 200) {
-            localStorage.setItem("groupomania-token", res.token);
-            localStorage.setItem("groupomania-id", res.data.id);
+          if (res?.status === 200) {
+            localStorage.setItem("groupomania-token", res?.token);
+            localStorage.setItem("groupomania-id", res?.data.id);
             toast.success(`Bienvenu ${usernameInputRef.current.value}`, {
               position: "bottom-right",
               autoClose: 2000,
@@ -42,8 +42,8 @@ const Login = () => {
               draggable: false,
             });
             setTimeout(() => navigate("/"), 3000);
-          } else if (res.status === 401 || res.status === 404) {
-            toast.error(`${res.error}`, {
+          } else if (res?.status === 401 || res?.status === 404) {
+            toast.error(`${res?.error}`, {
               position: "bottom-right",
               autoClose: 2000,
               hideProgressBar: false,
