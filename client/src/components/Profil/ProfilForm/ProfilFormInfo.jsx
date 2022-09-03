@@ -26,7 +26,6 @@ const ProfilFormInfo = () => {
     const id = localStorage.getItem("groupomania-id");
 
     const data = {
-      username,
       email,
       phoneNumber,
     };
@@ -67,10 +66,10 @@ const ProfilFormInfo = () => {
         </h1>
       </div>
       <div className="relative flex flex-col w-3/4 h-[70%] rounded-xl backdrop-blur m-auto p-4 shadow-lg shadow-primary-100 md:flex-row">
+        <div>
+          <h2>{infos.username}</h2>
+        </div>
         <form onSubmit={handleSubmit}>
-          <div>
-            <h2>{infos.username}</h2>
-          </div>
           <div>
             <input
               name="email"
