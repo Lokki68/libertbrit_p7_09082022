@@ -22,9 +22,13 @@ const ProfilCard = ({ infos }) => {
         <h3 className="text-2xl font-semibold">{email}</h3>
         <p className="text-xl">{phoneNumber}</p>
       </div>
-      <div className="absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] w-1/2 bg-blue-600 flex items-center justify-center ">
-        <NavLink to="/profilformphoto">Modifier Photo</NavLink>
-        <NavLink to="/profilforminfo">Modifier Info</NavLink>
+      <div className="absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] w-full flex items-center justify-around ">
+        <NavLink to="/profilformphoto" className="btn w-32">
+          Modifier Photo
+        </NavLink>
+        <NavLink to="/profilforminfo" className="btn w-32">
+          Modifier Info
+        </NavLink>
       </div>
     </div>
   );

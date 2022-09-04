@@ -31,7 +31,6 @@ const ProfilFormInfo = () => {
     };
 
     updateUser(id, data).then((res) => {
-      console.log(res);
       if (res?.status === 200) {
         toast.success(` Informations modifiées avec succes.`, {
           position: "bottom-right",

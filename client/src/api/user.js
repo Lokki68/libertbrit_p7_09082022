@@ -36,6 +36,13 @@ export const updateUser = (id, data) => {
     .catch((err) => console.log({ err: err.message }));
 };
 
+export const updateUserPicture = (id, data) => {
+  return axios
+    .put(`${environnement.apiUrl}/user/upload/${id}`, data)
+    .then((res) => res.data)
+    .catch((err) => console.log({ err: err.message }));
+};
+
 export const deleteUser = (id) => {
   return axios
     .delete(`${environnement.apiUrl}/user/${id}`)
