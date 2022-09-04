@@ -11,7 +11,7 @@ const AdminSection = ({ user, toggleFunc }) => {
     };
 
     saveAdmin(id, data).then((res) => {
-      if (res.status === 200) {
+      if (res?.status === 200) {
         toast.success(`${user.username} est passé Admin`, {
           position: "bottom-right",
           autoClose: 2000,
@@ -22,7 +22,7 @@ const AdminSection = ({ user, toggleFunc }) => {
         });
         setTimeout(() => toggleFunc(), 3000);
       } else {
-        toast.error(`${res.msg}`, {
+        toast.error(`${res?.msg}`, {
           position: "bottom-right",
           autoClose: 2000,
           hideProgressBar: false,
@@ -39,7 +39,7 @@ const AdminSection = ({ user, toggleFunc }) => {
     const id = user.admin;
 
     deleteAdmin(id).then((res) => {
-      if (res.status === 200) {
+      if (res?.status === 200) {
         toast.success(`${user.username} n'est plus Admin`, {
           position: "bottom-right",
           autoClose: 2000,
@@ -57,13 +57,13 @@ const AdminSection = ({ user, toggleFunc }) => {
     <div className="bg-primary-200 w-full border-t-2 border-primary-300 my-4 pt-4">
       <div className="flex justify-around">
         <button className=" btn" onClick={handleUpdgrade}>
-          upgrade
+          upGrade
         </button>
         <Link to="/admin/profilform" state={{ user: user }} className="btn">
           edit
         </Link>
         <button className="btn" onClick={handleDelete}>
-          delete
+          downGrade
         </button>
       </div>
       <ToastContainer />
