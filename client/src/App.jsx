@@ -9,6 +9,8 @@ import Annuaire from "./components/Annuaire/Annuaire.jsx";
 import Profil from "./components/Profil/Profil.jsx";
 import ProfilFormInfo from "./components/Profil/ProfilForm/ProfilFormInfo.jsx";
 import ProfilFormPhoto from "./components/Profil/ProfilForm/ProfilFormPhoto.jsx";
+import AdminProfilForm from "./components/Admin/AdminProfilForm.jsx";
+import Admin from "./components/Admin/Admin.jsx";
 
 function App() {
   return (
@@ -68,6 +70,22 @@ function App() {
             element={
               <RequireAuth withAuth={true}>
                 <ProfilFormInfo />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <RequireAuth withAuth={true}>
+                <Admin />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/admin/profilform"
+            element={
+              <RequireAuth withAuth={true}>
+                <AdminProfilForm />
               </RequireAuth>
             }
           />

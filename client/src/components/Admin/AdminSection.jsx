@@ -59,7 +59,7 @@ const AdminSection = ({ user, toggleFunc }) => {
         <button className=" btn" onClick={handleUpdgrade}>
           upgrade
         </button>
-        <Link to="/admin/profiForm" state={{ user: user }} className="btn">
+        <Link to="/admin/profilform" state={{ user: user }} className="btn">
           edit
         </Link>
         <button className="btn" onClick={handleDelete}>
