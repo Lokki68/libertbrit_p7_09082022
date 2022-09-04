@@ -22,8 +22,8 @@ const AnnuaireCard = ({ user }) => {
           className="h-5 absolute top-0 right-0 hover:text-primary-100 cursor-pointer"
           onClick={toggleModal}
         />
-        <div className="flex flex-1 w-full ">
-          <div className="relative ml-2 mb-auto">
+        <div className="flex flex-1 flex-col w-full  md:flex-row ">
+          <div className="relative my-2 mx-auto">
             <img
               src={image}
               alt="profil"
