@@ -11,6 +11,7 @@ import ProfilFormInfo from "./components/Profil/ProfilForm/ProfilFormInfo.jsx";
 import ProfilFormPhoto from "./components/Profil/ProfilForm/ProfilFormPhoto.jsx";
 import AdminProfilForm from "./components/Admin/AdminProfilForm.jsx";
 import Admin from "./components/Admin/Admin.jsx";
+import NewPost from "./components/Posts/NewPost.jsx";
 
 function App() {
   return (
@@ -38,6 +39,14 @@ function App() {
             element={
               <RequireAuth withAuth={false}>
                 <Register />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/post/newpost"
+            element={
+              <RequireAuth withAuth={true}>
+                <NewPost />
               </RequireAuth>
             }
           />
