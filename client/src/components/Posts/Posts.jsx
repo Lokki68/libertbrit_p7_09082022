@@ -7,8 +7,8 @@ import PostCard from "./PostCard/PostCard.jsx";
 
 const Posts = () => {
   const { data: posts } = useSelector((state) => state.posts);
+  const users = useSelector((state) => state.users.data);
 
-  console.log(posts);
   return (
     <div className="h-[100vh] w-full flex flex-col pt-24 justify-start items-center ">
       <div className="w-full backdrop-blur py-2 shadow-md">
@@ -23,7 +23,7 @@ const Posts = () => {
         {posts.length === 0 ? (
           <p>Pas de post pour le moment ...</p>
         ) : (
-          posts.map((post) => <PostCard post={post} />)
+          posts.map((post) => <PostCard post={post} users={users} />)
         )}
       </div>
     </div>

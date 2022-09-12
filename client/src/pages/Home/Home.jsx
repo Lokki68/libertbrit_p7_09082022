@@ -4,12 +4,18 @@ import { getAllPosts } from "../../api/posts.js";
 import { useDispatch } from "react-redux";
 import { getAllPostsReducer } from "../../redux/Post/postsReducer.js";
 import Posts from "../../components/Posts/Posts.jsx";
+import { getAllUsers } from "../../api/user.js";
+import { getUsersReducers } from "../../redux/User/usersReducer.js";
 
 const Home = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    getAllUsers().then((res) => {
+      dispatch(getUsersReducers(res?.data));
+    });
+
     getAllPosts().then((res) => {
       console.log(res);
       setIsLoaded(!isLoaded);
