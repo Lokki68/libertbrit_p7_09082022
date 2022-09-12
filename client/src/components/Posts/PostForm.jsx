@@ -23,7 +23,7 @@ const PostForm = ({ edit }) => {
     if (!edit) {
       createPost(data).then((res) => {
         if (res.status === 200) {
-          toast.success(` Message enregistré.`, {
+          toast.success(` Post enregistré.`, {
             position: "bottom-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -63,17 +63,24 @@ const PostForm = ({ edit }) => {
         >
           <div>
             <textarea
-              name=""
               id="message"
+              cols="30"
               rows="10"
-              placeholder="nouveau message ..."
+              placeholder="Nouveau message ..."
+              onInput={(e) => setMessage(e.target?.value)}
             ></textarea>
           </div>
           <div>
             <label htmlFor="fileSelector" className="btn w-3/4 ">
-              Choisir sa photo
+              Envoyer une image
             </label>
-            <input type="file" id="fileSelector" className="hidden" />
+            <input
+              type="file"
+              id="fileSelector"
+              className="hidden"
+              accept=".jpg, .jpeg, .png"
+              onChange={(e) => setImage(e.target.files[0])}
+            />
           </div>
           <div className="flex justify-around  w-full">
             <Link to="/" className="btn w-28 ">
