@@ -31,6 +31,9 @@ module.exports = {
         'success': '#35591a',
         'alert': '#591a1a'
       },
+      gridTemplateColumns: {
+        'comment': '1fr 3fr 1fr'
+      }
     },
   },
   plugins: [],

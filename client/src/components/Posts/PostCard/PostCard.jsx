@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const PostCard = ({ post, users }) => {
   const posterUser = users.find((user) => user.id === post.userId);
-  console.log(post);
 
   const date = timeAgo(post.date);
 

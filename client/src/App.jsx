@@ -13,6 +13,7 @@ import AdminProfilForm from "./components/Admin/AdminProfilForm.jsx";
 import Admin from "./components/Admin/Admin.jsx";
 import PostForm from "./components/Posts/PostForm.jsx";
 import PostDetail from "./components/Posts/postDetail.jsx";
+import CommentForm from "./components/Posts/Comments/CommentForm.jsx";
 
 function App() {
   return (
@@ -60,10 +61,18 @@ function App() {
             }
           />
           <Route
-            path="/post/editpost"
+            path="/post/:id/editpost"
             element={
               <RequireAuth withAuth={true}>
                 <PostForm edit={true} />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/post/:id/newcomment"
+            element={
+              <RequireAuth withAuth={true}>
+                <CommentForm />
               </RequireAuth>
             }
           />

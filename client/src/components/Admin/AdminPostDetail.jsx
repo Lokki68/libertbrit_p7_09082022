@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { PencilIcon, TrashIcon } from "@heroicons/react/solid";
 import { deletePost } from "../../api/posts.js";
 
-const AdminPostDetail = ({ postId }) => {
+const AdminPostDetail = ({ post }) => {
   const navigate = useNavigate();
+  const { postId, message, image } = post;
 
   const handleDelete = () => {
     deletePost(postId).then((res) => {
@@ -17,7 +18,12 @@ const AdminPostDetail = ({ postId }) => {
   return (
     <div className="flex items-center w-1/8 ">
       <Link
-        to={`/post/${postId}/edit`}
+        to={`/post/${postId}/editpost`}
+        state={{
+          postId,
+          message,
+          image,
+        }}
         className="btn w-6 h-6 mx-1 p-0 flex items-center justify-center"
       >
         <PencilIcon className="h-4" />

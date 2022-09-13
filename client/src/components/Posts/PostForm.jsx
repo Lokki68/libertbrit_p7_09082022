@@ -1,26 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { createPost } from "../../api/posts.js";
+import { createPost, updatePost } from "../../api/posts.js";
 
 const PostForm = ({ edit }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const { postId, message: stateMessage, image: stateImage } = location.state;
   const [message, setMessage] = useState("");
   const [image, setImage] = useState("");
+
+  console.log();
+
+  useEffect(() => {
+    if (edit) {
+      setMessage(stateMessage);
+      setImage(stateImage);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const userId = localStorage.getItem("groupomania-id");
 
-    const data = new FormData();
-    data.append("userId", userId);
-    data.append("message", message);
-    data.append("image", image);
-
     if (!edit) {
+      const data = new FormData();
+      data.append("userId", userId);
+      data.append("message", message);
+      data.append("image", image);
+
       createPost(data).then((res) => {
         if (res.status === 200) {
           toast.success(` Post enregistré.`, {
@@ -45,6 +55,35 @@ const PostForm = ({ edit }) => {
         }
       });
     } else {
+      const data = {
+        userId: parseInt(userId),
+        message,
+      };
+
+      updatePost(postId, data).then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          toast.success(` Post modifié.`, {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+          });
+          setTimeout(() => navigate("/"), 3000);
+        } else {
+          toast.error(`${res?.error}`, {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+          });
+        }
+      });
     }
   };
 
@@ -68,6 +107,7 @@ const PostForm = ({ edit }) => {
               rows="10"
               placeholder="Nouveau message ..."
               onInput={(e) => setMessage(e.target?.value)}
+              value={message}
             ></textarea>
           </div>
           <div>
@@ -87,7 +127,7 @@ const PostForm = ({ edit }) => {
               Retour
             </Link>
             <button className="btn w-28" type="submit">
-              Envoyer
+              {edit ? "Modifier" : "Envoyer"}
             </button>
           </div>
         </form>
