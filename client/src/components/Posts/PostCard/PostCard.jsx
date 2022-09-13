@@ -43,7 +43,7 @@ const PostCard = ({ post, users }) => {
           </span>
           <span className="text-gray-500">Likes : {post.likes.length} </span>
         </div>
-        <Link to={`post/${post.id}`} className="btn h-8">
+        <Link to={`post/${post.id}`} className="btn h-8" state={{ post: post }}>
           plus
         </Link>
       </div>
