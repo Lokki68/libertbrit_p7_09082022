@@ -25,7 +25,7 @@ const PostDetail = () => {
         </Link>
         {
           post.userId.toString() === userId ? (
-            <AdminPostDetail />
+            <AdminPostDetail postId={postId} />
           ) : (
             <Like postId={postId} likes={likes} userId={userId} />
           )
