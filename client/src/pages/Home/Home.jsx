@@ -17,7 +17,6 @@ const Home = () => {
     });
 
     getAllPosts().then((res) => {
-      console.log(res);
       setIsLoaded(!isLoaded);
       return dispatch(getAllPostsReducer(res));
     });

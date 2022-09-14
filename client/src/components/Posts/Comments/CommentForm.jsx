@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import { createComment } from "../../../api/comment.js";
+import { createComment, updateComment } from "../../../api/comment.js";
 
 const CommentForm = ({ edit }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  console.log(location);
-
   const [comment, setComment] = useState("");
-  const { postId, userId } = location.state;
+  const { postId, commentId, userId, content } = location.state;
+
+  useEffect(() => {
+    if (edit) {
+      setComment(content);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +49,29 @@ const CommentForm = ({ edit }) => {
         }
       });
     } else {
+      updateComment(commentId, data).then((res) => {
+        if (res.status === 200) {
+          toast.success(` Commentaire modifié.`, {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+          });
+          setTimeout(() => navigate("/"), 3000);
+        } else {
+          toast.error(`${res?.error}`, {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+          });
+        }
+      });
     }
   };
 
@@ -66,6 +93,7 @@ const CommentForm = ({ edit }) => {
               id="message"
               rows="5"
               placeholder="Nouveau commentaire ..."
+              value={comment}
               onInput={(e) => setComment(e.target?.value)}
             ></textarea>
           </div>
@@ -74,7 +102,7 @@ const CommentForm = ({ edit }) => {
               Retour
             </Link>
             <button className="btn w-28" type="submit">
-              Envoyer
+              {edit ? "Modifier" : "Envoyer"}
             </button>
           </div>
         </form>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { updateUser } from "../../api/user.js";
-import { loadUserInfosReducer } from "../../redux/User/userReducer.js";
 
 const AdminProfilForm = () => {
   const navigate = useNavigate();
@@ -50,8 +49,6 @@ const AdminProfilForm = () => {
         });
       }
     });
-
-    console.table(data);
   };
 
   return (

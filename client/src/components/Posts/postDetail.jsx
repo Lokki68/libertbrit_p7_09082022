@@ -25,9 +25,6 @@ const PostDetail = () => {
     </>
   );
 
-  console.log(comments);
-  console.log(likes);
-
   return (
     <div className="h-[100vh] w-full flex flex-col pt-24 justify-start items-center ">
       <div className="w-full backdrop-blur py-2 shadow-md">

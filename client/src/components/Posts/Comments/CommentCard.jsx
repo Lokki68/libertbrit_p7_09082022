@@ -9,8 +9,6 @@ const CommentCard = ({ comment, userId }) => {
   const { id: commentId, date, content, userId: commenterId } = comment;
   const [commenterUsername, setCommenterUsername] = useState("");
 
-  console.log(comment);
-
   useEffect(() => {
     if (users.length > 0) {
       const user = users.filter((user) => user.id === comment.userId);

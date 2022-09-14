@@ -7,14 +7,18 @@ const PostForm = ({ edit }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { postId, message: stateMessage, image: stateImage } = location.state;
+  const [editPostId, setEditPostId] = useState("");
   const [message, setMessage] = useState("");
   const [image, setImage] = useState("");
 
-  console.log();
-
   useEffect(() => {
     if (edit) {
+      const {
+        postId,
+        message: stateMessage,
+        image: stateImage,
+      } = location.state;
+      setEditPostId(postId);
       setMessage(stateMessage);
       setImage(stateImage);
     }
@@ -32,7 +36,7 @@ const PostForm = ({ edit }) => {
       data.append("image", image);
 
       createPost(data).then((res) => {
-        if (res.status === 200) {
+        if (res?.status === 200) {
           toast.success(` Post enregistré.`, {
             position: "bottom-right",
             autoClose: 2000,
@@ -60,8 +64,8 @@ const PostForm = ({ edit }) => {
         message,
       };
 
-      updatePost(postId, data).then((res) => {
-        if (res.status === 200) {
+      updatePost(editPostId, data).then((res) => {
+        if (res?.status === 200) {
           toast.success(` Post modifié.`, {
             position: "bottom-right",
             autoClose: 2000,
@@ -102,7 +106,6 @@ const PostForm = ({ edit }) => {
           <div>
             <textarea
               id="message"
-              cols="30"
               rows="10"
               placeholder="Nouveau message ..."
               onInput={(e) => setMessage(e.target?.value)}
