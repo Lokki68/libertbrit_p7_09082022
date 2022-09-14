@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 import AdminPostDetail from "../Admin/AdminPostDetail.jsx";
 import Like from "./Like/Like.jsx";
 import CommentCard from "./Comments/CommentCard.jsx";
@@ -34,14 +33,11 @@ const PostDetail = () => {
         <Link to={"/"} className="btn">
           retour
         </Link>
-        {
-          post.userId.toString() === userId ? (
-            <AdminPostDetail post={{ postId, message, image }} />
-          ) : (
-            <Like postId={postId} likes={likes} userId={userId} />
-          )
-          //todo: adminPostSection & likeComponent
-        }
+        {post.userId.toString() === userId ? (
+          <AdminPostDetail post={{ postId, message, image }} />
+        ) : (
+          <Like postId={postId} likes={likes} userId={userId} />
+        )}
       </div>
       <div className="flex flex-col border-b-2 border-primary-200 ">
         <div className="my-4">{displayPostImage}</div>
