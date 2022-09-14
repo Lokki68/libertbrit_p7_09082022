@@ -51,7 +51,7 @@ const Register = () => {
           } else if (res?.status === 400 || res?.status === 403) {
             console.log(res);
             toast.error(`${res?.error}`, {
-              position: "top-right",
+              position: "bottom-right",
               autoClose: 2000,
               hideProgressBar: false,
               closeOnClick: true,
