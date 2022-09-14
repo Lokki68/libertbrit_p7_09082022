@@ -13,17 +13,16 @@ const PostDetail = () => {
   const displayPostDetail = post && <p className="text-xl">{message}</p>;
 
   const displayPostImage = image && (
-    <img src={image} alt={postId} className="w-3/4 mx-auto" />
+    <img src={image} alt={postId} className="mx-auto w-3/4 max-w-[340px]" />
   );
 
-  const displayComments = comments.length > 0 && (
-    <ul>
-      {comments.map((comment) => (
-        <li key={comment.id}>
-          <CommentCard comment={comment} userId={userId} />
-        </li>
-      ))}
-    </ul>
+  const displayComments = (
+    <>
+      {comments.length > 0 &&
+        comments.map((comment) => (
+          <CommentCard key={comment.id} comment={comment} userId={userId} />
+        ))}
+    </>
   );
 
   console.log(comments);
@@ -52,11 +51,12 @@ const PostDetail = () => {
         <div className="my-4">{displayPostDetail}</div>
       </div>
 
-      <div className="w-full">
+      <div className="w-full my-4 ">
         <span>
           <Link
             to={`/post/${postId}/newcomment`}
             state={{
+              postId,
               userId,
             }}
             className="btn w-60 m-2 "
@@ -64,7 +64,9 @@ const PostDetail = () => {
             nouveau commentaire
           </Link>
         </span>
-        {displayComments}
+        <div className="flex flex-wrap justify-center mt-2 mx-auto overflow-y-auto h-60 w-7/8">
+          {displayComments}
+        </div>
       </div>
     </div>
   );

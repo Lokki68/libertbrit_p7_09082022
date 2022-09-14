@@ -32,7 +32,7 @@ module.exports = {
         'alert': '#591a1a'
       },
       gridTemplateColumns: {
-        'comment': '1fr 3fr 1fr'
+        'comment': '2fr 4fr 1fr'
       }
     },
   },

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { createPost } from "../../../api/posts.js";
 import { toast, ToastContainer } from "react-toastify";
 import { createComment } from "../../../api/comment.js";
 
@@ -8,23 +7,20 @@ const CommentForm = ({ edit }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [comment, setcomment] = useState("");
+  const [comment, setComment] = useState("");
   const [image, setImage] = useState("");
-  const userId = localStorage.getItem("groupomania-id");
-
-  console.log(location);
+  const { postId, userId } = location.state;
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const userId = localStorage.getItem("groupomania-id");
-
-    const data = new FormData();
-    data.append("userId", userId);
-    data.append("comment", comment);
+    const data = {
+      userId: parseInt(userId),
+      content: comment,
+    };
 
     if (!edit) {
-      createComment(data).then((res) => {
+      createComment(postId, data).then((res) => {
         if (res.status === 200) {
           toast.success(` Commentaire enregistré.`, {
             position: "bottom-right",
@@ -67,10 +63,9 @@ const CommentForm = ({ edit }) => {
           <div>
             <textarea
               id="message"
-              cols="30"
               rows="5"
               placeholder="Nouveau commentaire ..."
-              onInput={(e) => setMessage(e.target?.value)}
+              onInput={(e) => setComment(e.target?.value)}
             ></textarea>
           </div>
           <div className="flex justify-around  w-full">

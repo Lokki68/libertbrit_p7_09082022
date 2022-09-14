@@ -1,6 +1,5 @@
 import React from "react";
-import { SearchIcon } from "@heroicons/react/solid";
-import AnnuaireCard from "../Annuaire/AnnuaireCard/AnnuaireCard.jsx";
+
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import PostCard from "./PostCard/PostCard.jsx";
