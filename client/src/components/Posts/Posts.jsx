@@ -22,7 +22,9 @@ const Posts = () => {
         {posts.length === 0 ? (
           <p>Pas de post pour le moment ...</p>
         ) : (
-          posts.map((post) => <PostCard post={post} users={users} />)
+          posts.map((post) => (
+            <PostCard key={post.id} post={post} users={users} />
+          ))
         )}
       </div>
     </div>
