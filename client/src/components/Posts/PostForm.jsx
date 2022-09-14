@@ -61,7 +61,6 @@ const PostForm = ({ edit }) => {
       };
 
       updatePost(postId, data).then((res) => {
-        console.log(res);
         if (res.status === 200) {
           toast.success(` Post modifié.`, {
             position: "bottom-right",

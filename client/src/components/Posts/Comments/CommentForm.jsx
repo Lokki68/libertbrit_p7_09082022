@@ -7,8 +7,9 @@ const CommentForm = ({ edit }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  console.log(location);
+
   const [comment, setComment] = useState("");
-  const [image, setImage] = useState("");
   const { postId, userId } = location.state;
 
   const handleSubmit = (e) => {

@@ -77,6 +77,14 @@ function App() {
             }
           />
           <Route
+            path="/comment/:id/editcomment"
+            element={
+              <RequireAuth withAuth={true}>
+                <CommentForm edit={true} />
+              </RequireAuth>
+            }
+          />
+          <Route
             path="/annuaire"
             element={
               <RequireAuth withAuth={true}>

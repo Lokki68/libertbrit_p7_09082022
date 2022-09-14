@@ -21,11 +21,13 @@ const CommentCard = ({ comment, userId }) => {
 
   const dateFormated = timeAgo(date);
 
-  const displayAdmin = parseInt(userId) === comment.userId && <AdminComment />;
+  const displayAdmin = parseInt(userId) === comment.userId && (
+    <AdminComment comment={comment} />
+  );
 
   return (
     <>
-      <div className="grid grid-cols-comment h-20 w-full mx-2  ">
+      <div className="grid grid-cols-comment min-h-20 max-h-40 w-full mx-2 py-2 border-b-2  ">
         <div className="flex flex-col justify-center items-center mx-auto text-primary-300">
           <span className="font-bold">{commenterUsername}</span>
           <span className="text-xs">{dateFormated}</span>

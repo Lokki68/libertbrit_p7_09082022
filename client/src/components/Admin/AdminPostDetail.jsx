@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PencilIcon, TrashIcon } from "@heroicons/react/solid";
 import { deletePost } from "../../api/posts.js";
+import { toast, ToastContainer } from "react-toastify";
 
 const AdminPostDetail = ({ post }) => {
   const navigate = useNavigate();
@@ -9,14 +10,33 @@ const AdminPostDetail = ({ post }) => {
 
   const handleDelete = () => {
     deletePost(postId).then((res) => {
-      if (res.status === 200) {
-        navigate("/");
+      if (res?.status === 200) {
+        toast.success(` Post supprimé.`, {
+          position: "bottom-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+        });
+        setTimeout(() => navigate("/"), 3000);
+      } else {
+        toast.error(`${res?.error}`, {
+          position: "bottom-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+          progress: undefined,
+        });
       }
     });
   };
 
   return (
     <div className="flex items-center w-1/8 ">
+      <ToastContainer />
       <Link
         to={`/post/${postId}/editpost`}
         state={{
