@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TrashIcon } from "@heroicons/react/solid";
 
 const ProfilGestionCard = ({ user, deleteFunc }) => {
-  const { id, image, username } = user;
+  const [isAdmin, setIsAdmin] = useState(false);
+  const { id, image, username, admin } = user;
+
+  useEffect(() => {
+    if (admin > 0) {
+      setIsAdmin(true);
+    }
+  }, []);
+
+  console.log(`${username} => ${isAdmin} `);
 
   return (
-    <li className="flex w-full flex-row justify-between items-center">
+    <li className="flex w-full flex-row justify-between items-center my-2">
       <div className=" flex flex-1 flex-row h-14 items-center ml-2 ">
         <img
           src={image}
@@ -17,9 +26,10 @@ const ProfilGestionCard = ({ user, deleteFunc }) => {
       <div>
         <button
           className="btn flex justify-center items-center mr-2 p-0 w-6 h-6"
+          disabled={isAdmin}
           onClick={() => deleteFunc(id)}
         >
-          <TrashIcon className="h-5" />
+          <TrashIcon className={`h-5 ${isAdmin && "text-gray-500"}`} />
         </button>
       </div>
     </li>
