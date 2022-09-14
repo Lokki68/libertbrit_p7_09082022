@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { ChatIcon, UserIcon } from "@heroicons/react/solid";
+import GestionProfil from "./Gestion/Profil/GestionProfil.jsx";
+import GestionPost from "./Gestion/Post/GestionPost.jsx";
 
 const Admin = () => {
   const [gestPost, setGestPost] = useState(false);
@@ -27,7 +29,9 @@ const Admin = () => {
           </button>
         </h1>
       </div>
-      <div>admin section</div>
+      <div className="w-full">
+        {gestProfil ? <GestionProfil /> : <GestionPost />}
+      </div>
     </div>
   );
 };

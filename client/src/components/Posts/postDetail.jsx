@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import AdminPostDetail from "../Admin/AdminPostDetail.jsx";
 import Like from "./Like/Like.jsx";
 import CommentCard from "./Comments/CommentCard.jsx";
+import { ArrowLeftIcon } from "@heroicons/react/solid";
 
 const PostDetail = () => {
   const userId = localStorage.getItem("groupomania-id");
@@ -30,8 +31,11 @@ const PostDetail = () => {
         <h1 className="text-3xl text-primary-300 font-bold">POSTS detail</h1>
       </div>
       <div className="flex w-full justify-between my-2 mx-4  ">
-        <Link to={"/"} className="btn">
-          retour
+        <Link
+          to={"/"}
+          className="btn w-6 h-6 mx-1 p-0 flex items-center justify-center "
+        >
+          <ArrowLeftIcon className="h-5" />
         </Link>
         {post.userId.toString() === userId ? (
           <AdminPostDetail post={{ postId, message, image }} />

@@ -10,7 +10,7 @@ const MobilNav = () => {
   };
 
   return (
-    <div className="flex ml-4 md:hidden">
+    <div className="flex ml-4 md:hidden cursor-pointer ">
       {!isNavOpen ? (
         <div onClick={toggleNav}>
           <MenuIcon className="h-7" />

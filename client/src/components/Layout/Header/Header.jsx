@@ -13,7 +13,7 @@ const Header = () => {
         <GlobeAltIcon className="h-9 text-white" />
         <p className="text-white font-bold text-2xl">Groupomania</p>
       </div>
-      {!isLogged ? <ConnectionNav /> : <NavContainer />}
+      {!isLogged ? <ConnectionNav /> : <NavContainer infos={infos} />}
     </div>
   );
 };
