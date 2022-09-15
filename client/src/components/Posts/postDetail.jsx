@@ -10,10 +10,14 @@ const PostDetail = () => {
   const { post } = useLocation().state;
   const { id: postId, message, image, comments, likes } = post;
 
-  const displayPostDetail = post && <p className="text-xl">{message}</p>;
+  const displayPostDetail = message && <p className="text-xl">{message}</p>;
 
   const displayPostImage = image && (
-    <img src={image} alt={postId} className="mx-auto w-3/4 max-w-[340px]" />
+    <img
+      src={image}
+      alt={postId}
+      className="mx-auto w-3/4 max-w-[340px] md:max-w-xl "
+    />
   );
 
   const displayComments = (
@@ -43,9 +47,11 @@ const PostDetail = () => {
           <Like postId={postId} likes={likes} userId={userId} />
         )}
       </div>
-      <div className="flex flex-col border-b-2 border-primary-200 ">
+      <div className="flex flex-col border-b-2 border-primary-200 md:flex-row md:w-full ">
         <div className="my-4">{displayPostImage}</div>
-        <div className="my-4">{displayPostDetail}</div>
+        <div className="my-4 md:flex md:flex-1 md:justify-start ">
+          {displayPostDetail}
+        </div>
       </div>
 
       <div className="w-full my-4 ">

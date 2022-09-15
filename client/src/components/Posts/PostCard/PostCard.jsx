@@ -9,7 +9,7 @@ const PostCard = ({ post, users }) => {
 
   const displayPicture = post.image && (
     <img
-      className=" w-3/4 my-2  mx-auto "
+      className=" w-3/4 max-w-3xl my-2  mx-auto "
       src={post.image}
       alt={`image du post ${post.id}`}
     />
