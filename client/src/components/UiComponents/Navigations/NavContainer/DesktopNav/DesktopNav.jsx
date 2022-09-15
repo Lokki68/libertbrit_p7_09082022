@@ -1,9 +1,10 @@
 import React from "react";
+import DesktopMenu from "./DesktopMenu.jsx";
 
 const DesktopNav = () => {
   return (
-    <div className="hidden md:flex">
-      <h2>DesktopNav</h2>
+    <div className="hidden md:flex w-3/4 ">
+      <DesktopMenu />
     </div>
   );
 };

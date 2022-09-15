@@ -11,10 +11,8 @@ const ProfilGestionCard = ({ user, deleteFunc }) => {
     }
   }, []);
 
-  console.log(`${username} => ${isAdmin} `);
-
   return (
-    <li className="flex w-full flex-row justify-between items-center my-2">
+    <li className="flex w-full flex-row justify-between items-center backdrop-blur p-1 my-2">
       <div className=" flex flex-1 flex-row h-14 items-center ml-2 ">
         <img
           src={image}

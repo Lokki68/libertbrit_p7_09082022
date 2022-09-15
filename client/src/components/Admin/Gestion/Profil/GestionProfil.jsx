@@ -11,15 +11,12 @@ const GestionProfil = () => {
   const navigate = useNavigate();
   const users = useSelector((state) => state?.users.data);
 
-  const [isLoaded, setIsLoaded] = useState(false);
-
   const getAllUsersFunction = () => {
     getAllUsers().then((res) => dispatch(getUsersReducers(res?.data)));
   };
 
   useEffect(() => {
     getAllUsersFunction();
-    setIsLoaded(!isLoaded);
   }, []);
 
   const handleDelete = (id) => {
@@ -48,8 +45,6 @@ const GestionProfil = () => {
       }
     });
   };
-
-  console.log(users);
 
   const displayUsers =
     users.length > 0 ? (
