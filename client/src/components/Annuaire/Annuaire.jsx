@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../api/user.js";
 import { getUsersReducers } from "../../redux/User/usersReducer.js";
@@ -51,7 +51,7 @@ const Annuaire = () => {
           onClick={searchUser}
         />
       </div>
-      <div className="flex flex-wrap justify-center overflow-x-scroll w-full">
+      <div className="flex flex-wrap justify-center w-full">
         {filteredData.length === 0
           ? data.map((user) => <AnnuaireCard user={user} key={user.id} />)
           : filteredData.map((user) => (
